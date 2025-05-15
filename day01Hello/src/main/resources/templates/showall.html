@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>선수 명단 전체 조회</h2>
+
+<div th:each="players : ${list}">
+    <span>이름: <span th:text="${players.name}"></span></span>
+    <span> | 나이: <span th:text="${players.age}"></span></span>
+    <span> | 소속팀: <span th:text="${players.team}"></span></span>
+    <br> <!-- 줄바꿈 -->
+</div>
+
+</body>
+</html>

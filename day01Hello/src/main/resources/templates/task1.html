@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>task1</title>
+    <link th:href="@{/css/task1.css}" rel="stylesheet">
+</head>
+<body>
+  <h2>task1 View</h2>
+
+  <form th:action="@{/calc2}" method="get">
+      <label>첫번째 수 : <input type="number" name="su1"></label>
+      <label>두번째 수 : <input type="number" name="su2"></label>
+      <button type="submit">계산하기</button>
+  </form>
+  <div class="box" th:if="${result!=null}" th:text="${result}">결과</div>
+  <img th:src="@{/imgs/calc.jpg}">
+</body>
+</html>

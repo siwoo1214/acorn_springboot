@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <h2>선수 정보 조회</h2>
+
+  <form th:action="@{/showoneplayer}" method="get">
+    <label>이름 : <input type="text" name="name"></label>
+    <button>조회하기</button>
+  </form>
+
+  <div th:if="${player!=null}">
+  이름 : <span th:text="${player.name}">선수 이름</span><br>
+  나이 : <span th:text="${player.age}">선수 나이</span><br>
+  소속팀 : <span th:text="${player.team}">선수 소속팀</span><br>
+  </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>에이콘 전체 프로젝트 조원 명단</h2>
+
+<div th:each="entry:${team}">
+    <p>조 이름<span th:text="${entry.key}"></span></p>
+
+
+    <!-- 조 명단 -->
+<div th:each="user:${entry.value}">
+    <span th:text="${user.id}"></span>
+    <span th:text="${user.pw}"></span>
+    <span th:text="${user.tel}"></span>
+</div>
+</div>
+</body>
+</html>

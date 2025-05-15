@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<!--
+  select * from  membertbl where id in ('acorn') ;
+  select * from  membertbl where id in ('acorn' ,'acorn3') ;
+  select * from  membertbl where id in ('acorn' ,'aconr3','acorn4') ;
+   -->
+<mapper namespace="a">
+    <select id="selectSearch" resultType="Member"  parameterType="java.util.List">
+        select  *
+        from membertbl
+        where id  in
+        <foreach  item="item" index="" collection="list"  open="("  close=")"   separator=",">
+            #{item}
+        </foreach>
+    </select>
+</mapper>
