@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="a">
+    <sql id="temp">
+        SELECT
+        m.movie_id,
+        m.title,
+        m.genre,
+        m.runtime,
+        m.director,
+        m.released,
+        s.screen_id,
+        s.screen_num,
+        s.seat_count,
+        s.start_time,
+        s.date_time
+        FROM movie m
+        JOIN screen s ON m.movie_id = s.movie_id
+    </sql>
+
+    <sql id="search">
+        <if test="condition  ==  'title'">
+            where title  like  '%' ||  #{keyword}  || '%'
+        </if>
+        <if test="condition ==  'date_time'">
+            where to_char(to_date(s.date_time, 'YYYY-MM-DD'), 'DD') = #{keyword}
+        </if>
+    </sql>
+
+    <select id="selectMovie" resultType="JoinedDTO" parameterType="SearchCondition">
+
+        <include refid="temp"/>
+        <include refid="search"/>
+    </select>
+
+    <!--  두개 테이블 조회한 결과  -->
+    <select id="allMovies" resultType="JoinedDTO">
+        <include refid="temp"/>
+    </select>
+
+    <select id="allM" resultType="Movie">
+        select * from movie
+    </select>
+</mapper>
