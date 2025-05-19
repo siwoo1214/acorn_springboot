@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글</title>
+</head>
+<body>
+    <!--  검색 폼  -->
+    <form th:action="@{/allcontents}" method="get">
+        <select name="condition">
+            <option>검색어 선택</option>
+            <option value="title">제목</option>
+            <option value="writer">작성자</option>
+            <option value="content">내용</option>
+        </select>
+
+        <input type="text" name = "keyword">
+        <button>검색</button>
+    </form>
+    <h2>게시글 내용</h2>
+    <div th:each="a:${list}">
+        <p th:text="${a.board_no}">글 번호</p>
+        <p th:text="${a.title}">글 제목</p>
+        <p th:text="${a.writer}">글쓴이</p>
+        <p th:text="${a.content}">내용</p>
+    </div>
+</body>
+</html>

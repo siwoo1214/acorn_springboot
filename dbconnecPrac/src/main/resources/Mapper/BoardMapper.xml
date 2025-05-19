@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="a">
+    <sql id="selectedOptions">
+        <if test="condition == 'title'">
+            where title like '%' || #{searchcontents} || '%'
+        </if>
+        <if test="condition == 'writer'">
+            where title like '%' || #{searchcontents} || '%'
+        </if>
+        <if test="condition == 'content'">
+            where title like '%' || #{searchcontents} || '%'
+        </if>
+    </sql>
+
+    <select id="SelectAll" resultType="Board">
+        select   *  from  boardt
+    </select>
+
+    <insert id="insert" parameterType="Board">
+        insert into boardt values(#{id}, #{title},#{writer},#{content})
+    </insert>
+
+    <select id="selectedBoard" resultType="Board" parameterType="searchIndex">
+        select * from boardt
+        <include refid="selectedOptions"/>
+    </select>
+</mapper>

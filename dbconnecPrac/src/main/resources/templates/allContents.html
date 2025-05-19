@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>게시글 내용</h2>
+<div th:each="a:${list1}">
+  <p th:text="${a.board_no}">글 번호</p>
+  <p th:text="${a.title}">글 제목</p>
+  <p th:text="${a.writer}">글쓴이</p>
+  <p th:text="${a.content}">내용</p>
+</div>
+</body>
+</html>
