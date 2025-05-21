@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+     <h2>앨비스 연산자 ?:  null을 처리해는 연산자임</h2>
+     <p>그니까 이게 삼항연  산자인데 true일 경우를 배제하고 false 즉 null값인 경우만
+     수행하게 만들어졌음</p>
+    <div th:text="${data} ?: 'there is no data'">데이터가 나오는 자리</div>
+    <div th:text="${data2} ?: 'there is no data'">데이터가 나오는 자리</div>
+
+    <h2>앨비스 연산자와 함께 사용하는 "no operation"</h2>
+    <div th:text="${data} ?: _"> 서울우유 딸기맛</div>
+    <div th:text="${data2} ?: _"> 서울우유 딸기맛</div>
+</body>
+</html>

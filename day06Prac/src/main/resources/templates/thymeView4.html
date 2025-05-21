@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+     <h2></h2>
+
+<!--  div안에 span이 들어가는 형태   -->
+    <div th:each="num:${#numbers.sequence(1,10)}">
+        <span th:text="${num}"></span>
+    </div>
+
+     <!--  div민 셍기는 형태   -->
+    <div th:each="num:${#numbers.sequence(1,10)}" th:text="${num}"></div>
+
+    <div th:each="num:${#numbers.sequence(1,10)}" th:text="|${num}번말 달립니다|"></div>
+
+    <h2>start, end</h2>
+    <div th:each="num:${#numbers.sequence(start,end)}" th:text="${num}"></div>
+</body>
+</html>

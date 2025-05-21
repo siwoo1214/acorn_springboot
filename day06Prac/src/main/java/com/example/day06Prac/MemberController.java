@@ -38,7 +38,7 @@ public class MemberController {
         totalCount = repo.countAll();
 
         PageHandler ph = new PageHandler(currentPage,pageSize,grpSize,totalCount);
-        System.out.println(ph);
+        System.out.println("PageHandler = "+ph);
 
         List<Member> list = repo.selectPage(currentPage,pageSize);
         model.addAttribute("pageHandler",ph);
