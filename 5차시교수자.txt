@@ -1,0 +1,11 @@
+
+
+1.  postman 으로 데이터 요청하기
+2.  스프링에서 예외처리하는 방법    
+3.  예외복습 ( checked , unchecked) : 처리방법
+
+
+
+day05PracException
+day05PracRestApi
+day05PracUpload

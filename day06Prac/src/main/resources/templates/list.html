@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table>
+        <tr th:each="item:${list}">
+            <td th:text="${item.m_id}"></td>
+            <td th:text="${item.m_pw}"></td>
+            <td th:text="${item.m_name}"></td>
+        </tr>
+    </table>
+
+    <!-- 1 => handler.getGrpStartPage -->
+    <!-- 2 => handler.getGrpEndPage -->
+    <!--  이렇게 하면 page 라는 변수에 sequence에 담기는 데이터들이 들어온다  -->
+
+    <!-- 이전 -->
+    <span th:if="${pageHandler.grpStartPage > 1}">
+        <a th:href="@{/list(currentPage=${pageHandler.grpStartPage-1})}">이전</a>
+    </span>
+
+    <span th:each="page : ${#numbers.sequence(pageHandler.grpStartPage, pageHandler.grpEndPage)}">
+        <a th:href="@{/list(currentPage=${page})}" th:text="|[${page}]|"></a>
+    </span>
+
+    <!-- 다음 -->
+    <span th:if="${pageHandler.grpEndPage < pageHandler.totalPage}">
+        <a th:href="@{/list(currentPage=${pageHandler.grpEndPage+1})}">다음</a>
+    </span>
+
+</body>
+</html>

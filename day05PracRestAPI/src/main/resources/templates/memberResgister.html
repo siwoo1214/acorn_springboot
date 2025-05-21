@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>member 등록하기</title>
+    <script>
+      function register(){
+        alert("register() 실행 완료");
+
+        // 사용자 입력 데이터 가져오기
+        // json객체로 만들기
+        // 확인하기
+        // fetch사용해서 등록하기
+
+        let id = document.getElementById("id").value;  //$("#id).val()
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+
+        //key값이 객체의 변수명과 일치해야한다
+        let jsonData = {id:id, name:name, email:email};
+        console.log(jsonData);
+
+        fetch("/members",{
+          method:"post",
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify(jsonData)
+        }).
+        then(response => response.text()).
+        then( (data) => {console.log(data); } ).
+        catch( (err) => {console.log(err); } );
+
+        /*
+        fetch("/members",{
+          method:"post",
+          headers:{"Content-Type":"application/json"},
+          body:"{id:siwoo, name:박시우, email"asdf@naver.com}"
+        })
+        .then( response => response.text() )
+        .then( (data) => {console.log(data); } )
+        .catch( ((err) => {console.log(err);} );
+        */
+      }
+    </script>
+</head>
+<body>
+  <input type="text" id="id">
+  <input type="text" id="name">
+  <input type="text" id="email">
+  <button onclick="register()">등록</button>
+</body>
+</html>

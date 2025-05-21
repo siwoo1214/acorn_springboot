@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    upload OKOKOKOKOKOKOK
+    <div th:text="${fileName}"></div>
+
+    <!--  <img src="/images/asd.png" alt="갱갱갱">  -->
+    <!--  이미지 한번 확인해보는 코드  -->
+    <!--  이미지 불러오는 thymeleaf문이 좀 복잡해서
+          힌번 더 확인 좀 해봐야 할 듯-->
+    <!--  이 이미지 태그는 @GetMapping("/images/{fileName}")한테서
+      resource를 갖고와서 이미지를 보여주는 src를 갖고있음-->
+    <img th:src="@{/images/{fileName}(fileName=${fileName})}" alt="갱갱갱">
+</body>
+</html>
