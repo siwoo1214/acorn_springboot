@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h2>homepage</h2>
+
+    <h3 th:text="|${id}님 안녕하세요|">로그인이 필요합니다</h3>
+
+    <a th:href="@{/loginForm}">로그인하기</a>
+</body>
+</html>
