@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        form{
+            display:flex;
+            gap:20px;
+            padding:10px;
+            border-radius:10px;
+            background-color:skyblue;
+            height:40px
+            line-height40px:
+        }
+
+        input:hover{
+            background-color:orange;
+            transition:1s;
+        }
+        input{
+            background-color:grey;
+            transition:1s;
+        }
+
+        div{
+            color:red;
+            font-weight:bold;
+            font-size:12px;
+        }
+    </style>
+</head>
+<body>
+    <form th:action="@{/order}" method="post" th:object="${order}">
+        <label>
+            상품이름:<input type="text" th:field="*{name}"> <br>
+            <div th:if="${errors?.containsKey('name')}" th:text="${errors['name']}"></div>
+        </label>
+        <label>
+            상품금액:<input type="text" th:field="*{price}"> <br>
+            <div th:if="${errors?.containsKey('price')}" th:text="${errors['price']}"></div>
+        </label>
+        <label>
+            상품수량:<input type="text" th:field="*{qty}"> <br>
+            <div th:if="${errors?.containsKey('qty')}" th:text="${errors['qty']}"></div>
+        </label>
+
+        <button>주문하기</button>
+    </form>
+</body>
+</html>

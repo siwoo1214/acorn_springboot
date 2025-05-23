@@ -14,7 +14,7 @@ public class WebConfigAll implements WebMvcConfigurer {
                 .addPathPatterns("/*.do", "/*.acorn")   //적용할 대상
                 .order(3);
 
-
+        //적용할 대상이 많으면 우선 등록시켜놓고 제외를 시키는 방법으로
         registry.addInterceptor(new LoggingInterceptor())
                 .addPathPatterns("/**")  //적용할 대상
                 .excludePathPatterns("/css/**", "/js/**", "/images/**")  //제외대상  "/login.do" ,

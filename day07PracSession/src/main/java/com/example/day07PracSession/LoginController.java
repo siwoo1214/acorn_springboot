@@ -16,7 +16,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class LoginController {
 
     @GetMapping("/home")
-    public String home(){
+    public String home(HttpSession session,Model model){
+        String id = (String)session.getAttribute("id");
+        model.addAttribute("id",id);
         return "home";
     }
 
@@ -34,24 +36,14 @@ public class LoginController {
     public String login(@ModelAttribute User user,
                         HttpServletResponse response,
                         HttpServletRequest request,
-                        RedirectAttributes redirectAttributes){
+                        HttpSession session){
 
         System.out.println(user.getId());
         System.out.println(user.getPw());
         System.out.println(user.isRmid());
 
-        if(!check(user)){
-            return "loginForm";
-        }
-        //인증 완료된 후 세션저장소에 로그인 정보 저장하기
+        session.setAttribute("id",user.getId());
 
-        HttpSession session = request.getSession();
-
-        //사용자 세션을 얻어옴
-        //기존에 사용자 세션이 있으면 있는 세션이 변환
-        //세션이 없다면 새로운 세션을 반환
-
-        redirectAttributes.addFlashAttribute("id",user.getId());
         if(user.isRmid()){
             Cookie cookie = new Cookie("userId",user.id);
             cookie.setMaxAge(60*60*24);
@@ -71,5 +63,18 @@ public class LoginController {
         } else{
             return false;
         }
+    }
+
+    @GetMapping("/logOut")
+    public String logout(HttpServletRequest request){
+
+        //세션정보 삭제하기
+        HttpSession session = request.getSession(false);
+        session.invalidate();
+
+        //세션에 저장된 값중 특정값만 지우고싶으면
+        //session.removeAttribute("USERID");
+
+        return "redirect:/home";
     }
 }

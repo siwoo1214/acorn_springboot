@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .err{
+            color:red;
+            font-weight:bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>상품등록</h2>
+    <form th:action="@{/item}" method="post" th:object="${item}">
+    <!--    money필드에 오류가 있으면 오류메세지 출력함    -->
+        <div class="err" th:errors="*{money}">금액 오류</div>
+        상품가격:<input type="text" th:field="*{money}"> <br>
+
+        <div th:errors="*{name}">이름 오류</div>
+        상품이름:<input type="text" th:field="*{name}"> <br>
+
+        <div class="err" th:errors="*{inDate}">날자 포맷 오류</div>
+        입고일자:<input type="text" th:field="*{inDate}"> <br>
+
+        <button>등록</button>
+
+    </form>
+</body>
+</html>

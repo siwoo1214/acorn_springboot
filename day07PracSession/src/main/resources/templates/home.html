@@ -7,8 +7,19 @@
 <body>
     <h2>homepage</h2>
 
-    <h3 th:text="|${id}님 안녕하세요|">로그인이 필요합니다</h3>
+    <!-- id가 있을 때 -->
+    <h3 th:if="${id}" th:text="|${id}님 안녕하세요|"></h3>
 
-    <a th:href="@{/loginForm}">로그인하기</a>
+    <!-- id가 없을 때 -->
+    <h3 th:unless="${id}">로그인이 필요합니다</h3>
+
+<!--    <a th:href="@{/loginForm}">로그인하기</a>-->
+
+    <div th:if="${session.id==null}">
+        <a th:href="@{/loginForm}">로그인</a>
+    </div>
+    <div th:if="${session.id!=null}">
+        <a th:href="@{/logOut}">로그아웃</a>
+    </div>
 </body>
 </html>
